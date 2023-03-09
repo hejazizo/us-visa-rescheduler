@@ -1,5 +1,17 @@
+<img src="./images/logo.png" width="500" style="display: block; margin-left: auto; margin-right: auto;">
+
 # Visa Rescheduler
 Python code to re-schedule US VISA (ais.usvisa-info.com) appointments automatically.
+This script is provided by [Pytopia](https://pytopia.ai/) team, and is not affiliated with the US VISA website.
+Feel free to use this code for non-commercial purposes only. See the [License](#license) section for more details.
+
+
+Table of Contents
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [How to Run](#how-to-run)
 
 ## Prerequisites
 - Having a US VISA appointment scheduled already.
@@ -44,3 +56,19 @@ We have a plan to add support for multiple locations in the future. Stay tuned!
 3. Run `python src/main.py` to start the script.
 4. The script will open a Chrome window and start the re-scheduling process.
 5. Once the re-scheduling is done, the script will close the Chrome window.
+
+# Disclaimer
+This script is provided as is. We are not responsible for any damage caused by using this script. Use at your own risk.
+
+# License
+This project is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License - see the [LICENSE](./LICENCE) file for details. You can use this code for non-commercial purposes only.
+
+# Acknowledgments
+- [Selenium](https://www.selenium.dev/) for automating the browser.
+- [ChromeDriver](https://chromedriver.chromium.org/) for controlling Chrome.
+
+If you enjoyed this project, please consider giving it a star ⭐️ and sharing it with your friends.
+Also feel free to contribute to this project by creating a pull request.
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
