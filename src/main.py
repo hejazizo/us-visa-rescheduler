@@ -177,8 +177,12 @@ def reschedule(date: str) -> bool:
     data = {
         "utf8": driver.find_element(by=By.NAME, value='utf8').get_attribute('value'),
         "authenticity_token": driver.find_element(by=By.NAME, value='authenticity_token').get_attribute('value'),
-        "confirmed_limit_message": driver.find_element(by=By.NAME, value='confirmed_limit_message').get_attribute('value'),
-        "use_consulate_appointment_capacity": driver.find_element(by=By.NAME, value='use_consulate_appointment_capacity').get_attribute('value'),
+        "confirmed_limit_message": driver.find_element(
+            by=By.NAME, value='confirmed_limit_message'
+        ).get_attribute('value'),
+        "use_consulate_appointment_capacity": driver.find_element(
+            by=By.NAME, value='use_consulate_appointment_capacity'
+        ).get_attribute('value'),
         "appointments[consulate_appointment][facility_id]": FACILITY_ID,
         "appointments[consulate_appointment][date]": date,
         "appointments[consulate_appointment][time]": time,
@@ -191,7 +195,7 @@ def reschedule(date: str) -> bool:
     }
 
     r = requests.post(APPOINTMENT_URL, headers=headers, data=data)
-    if(r.text.find('Successfully Scheduled') != -1):
+    if r.text.find('Successfully Scheduled') != -1:
         logger.info(f"Rescheduled Successfully! {date} {time}")
         return True
 
@@ -201,9 +205,7 @@ def reschedule(date: str) -> bool:
 
 def is_logged_in():
     content = driver.page_source
-    if(content.find("error") != -1):
-        return False
-    return True
+    return content.find('error') == -1
 
 
 def search_for_available_date():
