@@ -5,13 +5,21 @@ Python code to re-schedule US VISA (ais.usvisa-info.com) appointments automatica
 This script is provided by [Pytopia](https://pytopia.ai/) team, and is not affiliated with the US VISA website.
 Feel free to use this code for non-commercial purposes only. See the [License](#license) section for more details.
 
+**WARNING: There is a limit for re-scheduling attempts.** Be careful not to exceed the limit. I did some research, some people say it's 3 attempts, some say it's 5 attempts. I don't know for sure. So be careful! I did 4 attempts and it worked for me.
+
+Also be careful for refreshing the page too many times. If you refresh the page too many times, you will get a message saying that you have exceeded the limit of refreshing the page. I don't know the exact number of refreshes, but I put 10 minutes between each refresh, and had it running for 3 different locations. So like 3 minutes for each location. I even got the forbidden message. But don't worry, you are not banned forever. Just wait for a few hours and try again.
+
+I could get an appointment that was scheduled for 2 days later, after running the script for 3 weeks. My previous appointment was scheduled for 1 year later. So it's worth it to run the script for a long time.
+
 
 Table of Contents
-- [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [How to Run](#how-to-run)
+- [Disclaimer](#disclaimer)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
 ## Prerequisites
 - Having a US VISA appointment scheduled already.
