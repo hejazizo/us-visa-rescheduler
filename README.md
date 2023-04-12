@@ -78,5 +78,5 @@ This project is licensed under the Creative Commons Attribution-NonCommercial-No
 If you enjoyed this project, please consider giving it a star ⭐️ and sharing it with your friends.
 Also feel free to contribute to this project by creating a pull request.
 
-## Contributing
+# Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
