@@ -50,7 +50,7 @@ def login():
 
     logger.info("Login start...")
     href = driver.find_element(
-        By.XPATH, '//*[@id="header"]/nav/div[2]/div[1]/ul/li[3]/a')
+        By.XPATH, '//*[@id="header"]/nav/div/div/div[2]/div[1]/ul/li[3]/a')
     href.click()
     time.sleep(STEP_TIME)
     Wait(driver, 60).until(EC.presence_of_element_located((By.NAME, "commit")))
