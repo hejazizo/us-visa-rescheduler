@@ -20,7 +20,8 @@ config = load_config('src/config.ini')
 USERNAME = config['USVISA']['USERNAME']
 PASSWORD = config['USVISA']['PASSWORD']
 SCHEDULE_ID = config['USVISA']['SCHEDULE_ID']
-MY_SCHEDULE_DATE = config['USVISA']['MY_SCHEDULE_DATE']
+MY_SCHEDULE_DATE_START = config['USVISA']['MY_SCHEDULE_DATE_START']
+MY_SCHEDULE_DATE_END = config['USVISA']['MY_SCHEDULE_DATE_END']
 COUNTRY_CODE = config['USVISA']['COUNTRY_CODE']
 LOCAL_USE = config['CHROMEDRIVER'].getboolean('LOCAL_USE')
 HUB_ADDRESS = config['CHROMEDRIVER']['HUB_ADDRESS']
@@ -105,16 +106,21 @@ def get_available_dates():
 def get_valid_date(dates: list) -> Union[str, None]:
     """
     Get the first valid date from the list of available dates.
-    A valid date is a date that is earlier than MY_SCHEDULE_DATE.
+    A valid date is a date that is after MY_SCHEDULE_DATE_START and earlier than MY_SCHEDULE_DATE_END.
 
     :param dates: List of available dates
     """
     def is_earlier(date):
-        my_date = datetime.strptime(MY_SCHEDULE_DATE, "%Y-%m-%d")
+        my_date = datetime.strptime(MY_SCHEDULE_DATE_END, "%Y-%m-%d")
         new_date = datetime.strptime(date, "%Y-%m-%d")
         return my_date > new_date
 
-    logger.info(f"Checking for a date earlier than {MY_SCHEDULE_DATE}...")
+    def is_after(date):
+        my_date = datetime.strptime(MY_SCHEDULE_DATE_START, "%Y-%m-%d")
+        new_date = datetime.strptime(date, "%Y-%m-%d")
+        return my_date < new_date
+
+    logger.info(f"Checking for a date after {MY_SCHEDULE_DATE_START} and earlier than {MY_SCHEDULE_DATE_END} ...")
     dates_table = PrettyTable()
     dates_table.field_names = ["Available Date", "Business Day", "Is Earlier"]
     dates_table.align["Available Date"] = "l"
@@ -126,7 +132,7 @@ def get_valid_date(dates: list) -> Union[str, None]:
         dates_table.add_row([
             date,
             'Yes' if d.get('business_day') else 'No',
-            GREEN_CIRCLE_EMOJI if is_earlier(date) else RED_CIRCLE_EMJOI,
+            GREEN_CIRCLE_EMOJI if (is_after(date) & is_earlier(date)) else RED_CIRCLE_EMJOI,
         ])
     print(dates_table)
 
