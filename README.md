@@ -29,7 +29,7 @@ Table of Contents
 ## Installation
 Install the required python packages by running:
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Configuration
